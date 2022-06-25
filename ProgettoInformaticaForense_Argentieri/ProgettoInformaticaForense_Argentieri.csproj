@@ -1,0 +1,510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{05B59B12-0583-4D30-95AB-881A3C0308BC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ProgettoInformaticaForense_Argentieri</RootNamespace>
+    <AssemblyName>ProgettoInformaticaForense_Argentieri</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>9A66618B28C8284C71FC1BDEB07FFFAC8E21B4D8</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ProgettoInformaticaForense_Argentieri_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.PDF, Version=22.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.PDF.22.2.0\lib\net4.0\Aspose.PDF.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharpFunctionalExtensions, Version=2.27.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CSharpFunctionalExtensions.2.27.0\lib\net472\CSharpFunctionalExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="ExtensionBlocks, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExtensionBlocks.1.3.1\lib\netstandard2.0\ExtensionBlocks.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome5, Version=2.1.6.0, Culture=neutral, PublicKeyToken=9cfaf01297a008f8, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome5.2.1.6\lib\net472\FontAwesome5.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome5.Net, Version=2.1.6.0, Culture=neutral, PublicKeyToken=9cfaf01297a008f8, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome5.2.1.6\lib\net472\FontAwesome5.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="GuidMapping, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GuidMapping.1.0.0.5\lib\netstandard2.0\GuidMapping.dll</HintPath>
+    </Reference>
+    <Reference Include="KeraLua, Version=1.3.1.0, Culture=neutral, PublicKeyToken=6a194c04b9c89217, processorArchitecture=MSIL">
+      <HintPath>..\packages\KeraLua.1.3.1\lib\net46\KeraLua.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLua, Version=1.6.0.0, Culture=neutral, PublicKeyToken=6a194c04b9c89217, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLua.1.6.0\lib\net46\NLua.dll</HintPath>
+    </Reference>
+    <Reference Include="Registry, Version=1.3.3.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Registry.1.3.3.2\lib\netstandard2.0\Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.11.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.6.0.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Converters\AccessTypeTooltipValueConverter.cs" />
+    <Compile Include="Converters\AccessTypeValueConverter.cs" />
+    <Compile Include="Converters\BoolToEnumConverter.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\DateTimeFormatConverter.cs" />
+    <Compile Include="Converters\DateTimeMinValueConverter.cs" />
+    <Compile Include="Converters\ProvisioningTypeToIsEnabledConverter.cs" />
+    <Compile Include="Converters\StringDateTimeConverter.cs" />
+    <Compile Include="Converters\TimeSpanDurationConverter.cs" />
+    <Compile Include="Converters\ViewerModeNameConverter.cs" />
+    <Compile Include="Exceptions\OverrunBufferException.cs" />
+    <Compile Include="ExtraData\ConsoleDataBlock.cs" />
+    <Compile Include="ExtraData\ConsoleFEDataBlock.cs" />
+    <Compile Include="ExtraData\DamagedDataBlock.cs" />
+    <Compile Include="ExtraData\DarwinDataBlock.cs" />
+    <Compile Include="ExtraData\EnvironmentVariableDataBlock.cs" />
+    <Compile Include="ExtraData\ExtraDataBase.cs" />
+    <Compile Include="ExtraData\IconEnvironmentDataBlock.cs" />
+    <Compile Include="ExtraData\KnownFolderDataBlock.cs" />
+    <Compile Include="ExtraData\PropertyStoreDataBlock.cs" />
+    <Compile Include="ExtraData\ShimDataBlock.cs" />
+    <Compile Include="ExtraData\SpecialFolderDataBlock.cs" />
+    <Compile Include="ExtraData\TrackerDataBaseBlock.cs" />
+    <Compile Include="ExtraData\VistaAndAboveIDListDataBlock.cs" />
+    <Compile Include="Messages\OnInstallEntriesChangedMessage.cs" />
+    <Compile Include="Messages\OnPrefetchInfoEntriesChangedMessage.cs" />
+    <Compile Include="Messages\OnRecentFolderEntriesChangedMessage.cs" />
+    <Compile Include="Messages\OnSessionEntriesChangedMessage.cs" />
+    <Compile Include="Messages\OnShellBagEntriesChangedMessage.cs" />
+    <Compile Include="Messages\OnSystemTimeChangedEntriesChangedMessage.cs" />
+    <Compile Include="Messages\OnUsageInfosChangedMessage.cs" />
+    <Compile Include="Messages\OnUsbEntriesChangedMessage.cs" />
+    <Compile Include="Models\Block.cs" />
+    <Compile Include="Models\Entry.cs" />
+    <Compile Include="Models\EntryType.cs" />
+    <Compile Include="Models\ExtensionBlock.cs" />
+    <Compile Include="Models\ExtensionBlockBEEF0004.cs" />
+    <Compile Include="Models\FileLocations.cs" />
+    <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\GUIDPair.cs" />
+    <Compile Include="Models\IExtensionBlock.cs" />
+    <Compile Include="Models\InstallEntry.cs" />
+    <Compile Include="Models\IntervalEntry.cs" />
+    <Compile Include="Models\IShellItem.cs" />
+    <Compile Include="Models\LogEntry.cs" />
+    <Compile Include="Models\LogoffEntry.cs" />
+    <Compile Include="Models\LogOnEntry.cs" />
+    <Compile Include="Models\LuaShellItem.cs" />
+    <Compile Include="Models\OperationType.cs" />
+    <Compile Include="Models\PrefetchInfoEntry.cs" />
+    <Compile Include="Models\ProvisioningType.cs" />
+    <Compile Include="Models\RecentFolderEntry.cs" />
+    <Compile Include="Models\RegistryShellItemDecorator.cs" />
+    <Compile Include="Models\SessionEntry.cs" />
+    <Compile Include="Models\ShellBagEntry.cs" />
+    <Compile Include="Models\ShellItem.cs" />
+    <Compile Include="Models\Shellitems.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x00.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x1F.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x20.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x21.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x23.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x25.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x28.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x29.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x2A.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x2E.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x2f.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x30.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x31.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x32.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x34.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x35.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x36.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x40.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x41.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x42.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x43.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x46.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x47.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x4D.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x4E.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x61.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x71.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0x74.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0xB1.cs" />
+    <Compile Include="Models\ShellItems\ShellItem0xC3.cs" />
+    <Compile Include="Models\ShellItems\ShellItemList.cs" />
+    <Compile Include="Models\ShellItemWithExtensions.cs" />
+    <Compile Include="Models\SystemTimeChangedEntry.cs" />
+    <Compile Include="Models\UsageInfo.cs" />
+    <Compile Include="Models\UsbEntry.cs" />
+    <Compile Include="Models\ViewerMode.cs" />
+    <Compile Include="Pages\InstalledPrograms.xaml.cs">
+      <DependentUpon>InstalledPrograms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Prefetch.xaml.cs">
+      <DependentUpon>Prefetch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Recents.xaml.cs">
+      <DependentUpon>Recents.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Sessions.xaml.cs">
+      <DependentUpon>Sessions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ShellBags.xaml.cs">
+      <DependentUpon>ShellBags.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SystemTimeChanged.xaml.cs">
+      <DependentUpon>SystemTimeChanged.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TimeIntervals.xaml.cs">
+      <DependentUpon>TimeIntervals.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Usb.xaml.cs">
+      <DependentUpon>Usb.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ConfigParser.cs" />
+    <Compile Include="Services\Contracts\IConfigParser.cs" />
+    <Compile Include="Services\Contracts\IRegistryReader.cs" />
+    <Compile Include="Services\Contracts\IShellBagsParserService.cs" />
+    <Compile Include="Services\Contracts\IUsageLogTimeService.cs" />
+    <Compile Include="Services\Contracts\IInstallEntriesBuilder.cs" />
+    <Compile Include="Services\Contracts\INavigationService.cs" />
+    <Compile Include="Services\DialogService.cs" />
+    <Compile Include="Services\Contracts\IDialogService.cs" />
+    <Compile Include="Services\Contracts\IEntryFormatter.cs" />
+    <Compile Include="Services\EntriesExporter.cs" />
+    <Compile Include="Services\EntryFormatter.cs" />
+    <Compile Include="Services\Contracts\IEntriesExporter.cs" />
+    <Compile Include="Services\Contracts\ILoggedInfoService.cs" />
+    <Compile Include="Services\Contracts\INetService.cs" />
+    <Compile Include="Services\Contracts\ISystemTimeChangedService.cs" />
+    <Compile Include="Services\Contracts\IUsbTrackingService.cs" />
+    <Compile Include="Services\Contracts\IReportService.cs" />
+    <Compile Include="Services\Contracts\IWindowFactory.cs" />
+    <Compile Include="Services\LoggedInfoService.cs" />
+    <Compile Include="Services\NetService.cs" />
+    <Compile Include="Services\ReportService.cs" />
+    <Compile Include="Services\SystemTimeChangedService.cs" />
+    <Compile Include="Services\UsbTrackingService.cs" />
+    <Compile Include="Services\WindowFactory.cs" />
+    <Compile Include="Utils\AccessTypeBuilder.cs" />
+    <Compile Include="Utils\EntryWriter.cs" />
+    <Compile Include="Services\InstallEntriesBuilder.cs" />
+    <Compile Include="Services\Contracts\IPrefetchFileInfoBuilderService.cs" />
+    <Compile Include="Services\Contracts\IPrefetchFileParserService.cs" />
+    <Compile Include="Services\Contracts\IRecentFilesService.cs" />
+    <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Services\OfflineRegistryReader.cs" />
+    <Compile Include="Services\OnlineRegistryReader.cs" />
+    <Compile Include="Services\PrefetchFileInfoBuilderService.cs" />
+    <Compile Include="Services\PrefetchFileParserService.cs" />
+    <Compile Include="Services\RecentFilesService.cs" />
+    <Compile Include="Services\ShellBagsParserService.cs" />
+    <Compile Include="Services\UsageLogTimeService.cs" />
+    <Compile Include="ShellBags\ShellBag0X00.cs" />
+    <Compile Include="ShellBags\ShellBag0X01.cs" />
+    <Compile Include="ShellBags\ShellBag0X1F.cs" />
+    <Compile Include="ShellBags\ShellBag0X23.cs" />
+    <Compile Include="ShellBags\ShellBag0X2E.cs" />
+    <Compile Include="ShellBags\ShellBag0X2F.cs" />
+    <Compile Include="ShellBags\ShellBag0X31.cs" />
+    <Compile Include="ShellBags\ShellBag0X32.cs" />
+    <Compile Include="ShellBags\ShellBag0X40.cs" />
+    <Compile Include="ShellBags\ShellBag0X4C.cs" />
+    <Compile Include="ShellBags\ShellBag0X61.cs" />
+    <Compile Include="ShellBags\ShellBag0X71.cs" />
+    <Compile Include="ShellBags\ShellBag0X74.cs" />
+    <Compile Include="ShellBags\ShellBag0Xc3.cs" />
+    <Compile Include="ShellBags\ShellBagCDBurn.cs" />
+    <Compile Include="Utils\Constants.cs" />
+    <Compile Include="Utils\DateBuilder.cs" />
+    <Compile Include="Utils\FileMetric.cs" />
+    <Compile Include="Utils\Header.cs" />
+    <Compile Include="Utils\Helpers.cs" />
+    <Compile Include="Utils\IPrefetch.cs" />
+    <Compile Include="Utils\JSON\RegistryLocations.cs" />
+    <Compile Include="Utils\KnownGuids.cs" />
+    <Compile Include="Utils\LnkFile.cs" />
+    <Compile Include="Utils\LnkHeader.cs" />
+    <Compile Include="Utils\LnkVolumeInfo.cs" />
+    <Compile Include="Utils\MFTInformation.cs" />
+    <Compile Include="Utils\NetworkShareInfo.cs" />
+    <Compile Include="Utils\RegistryHelper.cs" />
+    <Compile Include="Utils\RegistryKeyWrapper.cs" />
+    <Compile Include="Utils\ScriptHandler.cs" />
+    <Compile Include="Utils\ScriptPair.cs" />
+    <Compile Include="Utils\ShellBagParser.cs" />
+    <Compile Include="Utils\ShellBagZipContents.cs" />
+    <Compile Include="Utils\TraceChain.cs" />
+    <Compile Include="Utils\ValidationUtils.cs" />
+    <Compile Include="Utils\VolumeInfo.cs" />
+    <Compile Include="Utils\Xpress2.cs" />
+    <Compile Include="Versions\Version17.cs" />
+    <Compile Include="Versions\Version23.cs" />
+    <Compile Include="Versions\Version26.cs" />
+    <Compile Include="Versions\Version30.cs" />
+    <Compile Include="ViewModels\Infrastructure\ViewModelLocator.cs" />
+    <Compile Include="ViewModels\InstalledProgramsViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\PrefetchViewModel.cs" />
+    <Compile Include="ViewModels\RecentFolderViewModel.cs" />
+    <Compile Include="ViewModels\ReportViewModel.cs" />
+    <Compile Include="ViewModels\SessionsViewModel.cs" />
+    <Compile Include="ViewModels\ShellBagsViewModel.cs" />
+    <Compile Include="ViewModels\SystemTimeChangedViewModel.cs" />
+    <Compile Include="ViewModels\TimeIntervalsViewModel.cs" />
+    <Compile Include="ViewModels\UsbViewModel.cs" />
+    <Compile Include="ViewModels\Infrastructure\ValidationViewModelBase.cs" />
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\ReportWindow.xaml.cs">
+      <DependentUpon>ReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Pages\InstalledPrograms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Prefetch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Recents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Sessions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ShellBags.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SystemTimeChanged.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TimeIntervals.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Usb.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Skins\MainSkin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\GUIDs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\OS.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Scripts.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="Docs\Documentazione Progetto_Argentieri Antonio.pdf" />
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\KeraLua.1.3.1\build\net46\KeraLua.targets" Condition="Exists('..\packages\KeraLua.1.3.1\build\net46\KeraLua.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\KeraLua.1.3.1\build\net46\KeraLua.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\KeraLua.1.3.1\build\net46\KeraLua.targets'))" />
+  </Target>
+</Project>
