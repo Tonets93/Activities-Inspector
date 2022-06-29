@@ -32,7 +32,7 @@ namespace ProgettoInformaticaForense_Argentieri.Services
                         tmp.Add(logEntry);
                     }
                 });
-                
+
                 taskCompletionSource.SetResult(Result.Success(tmp));
             }
             catch (Exception ex)
@@ -50,22 +50,29 @@ namespace ProgettoInformaticaForense_Argentieri.Services
             var machineNames = events.Where(ev => ev.EventID == 1 && ev.CategoryNumber != 5 || ev.EventID == 41 && ev.CategoryNumber != 5)
                 .Select(ev => ev.MachineName).ToArray();
 
-            var intervals = GetIntervals(events).ToArray();
+            var intervals = GetIntervals(events).Where(interval => interval.Start != DateTime.MinValue).ToArray();
 
             TimeSpan duration;
 
-            for(var i = 0; i < intervals.Length; i++)
+            for (var i = 0; i < intervals.Length; i++)
             {
-                if(intervals[i].End != null)
+                if (intervals[i].End != null)
                 {
                     duration = intervals[i].End.Value.Subtract(intervals[i].Start);
                 }
                 else
                 {
-                    duration = DateTime.Now.Subtract(intervals[i].Start); 
+                    duration = DateTime.Now.Subtract(intervals[i].Start);
                 }
 
-                yield return new UsageInfo(intervals[i], duration, machineNames[i]);
+                if (machineNames.Count() != 0)
+                {
+                    yield return new UsageInfo(intervals[i], duration, machineNames[i]);
+                }
+                else
+                {
+                    yield return new UsageInfo(intervals[i], duration, string.Empty);
+                }
             }
         }
 
@@ -91,7 +98,15 @@ namespace ProgettoInformaticaForense_Argentieri.Services
                 else continue;
             }
 
-            yield return new IntervalEntry(start.Last().TimeGenerated, null);
+            var lastStartItem = start.LastOrDefault();
+            if (lastStartItem == null)
+            {
+                yield return new IntervalEntry(null);
+            }
+            else
+            {
+                yield return new IntervalEntry(start.Last().TimeGenerated, null);
+            }
         }
     }
 }

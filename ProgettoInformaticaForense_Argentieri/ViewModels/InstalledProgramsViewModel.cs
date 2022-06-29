@@ -19,7 +19,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
         public ObservableCollection<InstallEntry> InstallEntries
         {
             get => _installEntries;
-            set 
+            set
             {
                 var changed = Set(nameof(InstallEntries), ref _installEntries, value);
 
@@ -27,7 +27,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
                 {
                     ExportCommand.RaiseCanExecuteChanged();
                 }
-            }   
+            }
         }
 
         private bool _isBusy;
@@ -85,17 +85,24 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
             if (InstallEntries != null) InstallEntries.Clear();
             IsBusy = true;
 
-            var getInstallEntriesResult = await _installEntriesBuilder.GetInstallEntries();
-
-            if (getInstallEntriesResult.IsSuccess)
+            try
             {
-                InstallEntries = new ObservableCollection<InstallEntry>(getInstallEntriesResult.Value);
+                var getInstallEntriesResult = await _installEntriesBuilder.GetInstallEntries();
 
-                _messenger.Send(new OnInstallEntriesChangedMessage(InstallEntries.ToList()));
+                if (getInstallEntriesResult.IsSuccess)
+                {
+                    InstallEntries = new ObservableCollection<InstallEntry>(getInstallEntriesResult.Value);
+
+                    _messenger.Send(new OnInstallEntriesChangedMessage(InstallEntries.ToList()));
+                }
+                else
+                {
+                    _dialogService.ShowError(getInstallEntriesResult.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                _dialogService.ShowError(getInstallEntriesResult.Error);
+                _dialogService.ShowError(ex.Message + "\n" + ex.StackTrace);
             }
 
             IsBusy = false;

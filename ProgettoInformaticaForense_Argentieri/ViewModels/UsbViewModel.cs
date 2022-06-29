@@ -85,19 +85,26 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
             if (UsbEntries != null) UsbEntries.Clear();
             IsBusy = true;
 
-            var getUsbPluggedResult = await _usbTrackingService.GetUsbEventsLogsAsync(2003);
-            var getUsbUnpluggedResult = await _usbTrackingService.GetUsbEventsLogsAsync(2102);
-
-            if (getUsbPluggedResult.IsSuccess && getUsbUnpluggedResult.IsSuccess)
+            try
             {
-                var entries = _usbTrackingService.BuildUsbEntries(getUsbPluggedResult.Value, getUsbUnpluggedResult.Value);
-                UsbEntries = new ObservableCollection<UsbEntry>(entries.ToList());
+                var getUsbPluggedResult = await _usbTrackingService.GetUsbEventsLogsAsync(2003);
+                var getUsbUnpluggedResult = await _usbTrackingService.GetUsbEventsLogsAsync(2102);
 
-                _messenger.Send(new OnUsbEntriesChangedMessage(UsbEntries.ToList()));
+                if (getUsbPluggedResult.IsSuccess && getUsbUnpluggedResult.IsSuccess)
+                {
+                    var entries = _usbTrackingService.BuildUsbEntries(getUsbPluggedResult.Value, getUsbUnpluggedResult.Value);
+                    UsbEntries = new ObservableCollection<UsbEntry>(entries.ToList());
+
+                    _messenger.Send(new OnUsbEntriesChangedMessage(UsbEntries.ToList()));
+                }
+                else
+                {
+                    _dialogService.ShowError("Errore durante il caricamento degli eventi per la funzionalità richiesta.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                _dialogService.ShowError("Errore durante il caricamento degli eventi per la funzionalità richiesta.");
+                _dialogService.ShowError(ex.Message + "\n" + ex.StackTrace);
             }
 
             IsBusy = false;

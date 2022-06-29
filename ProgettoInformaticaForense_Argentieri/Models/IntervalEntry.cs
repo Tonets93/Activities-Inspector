@@ -12,5 +12,10 @@ namespace ProgettoInformaticaForense_Argentieri.Models
             Start = start;
             End = end;
         }
+
+        public IntervalEntry(DateTime? end)
+        {
+            End = end;
+        }
     }
 }

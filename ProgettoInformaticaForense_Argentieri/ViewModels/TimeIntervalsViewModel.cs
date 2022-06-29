@@ -19,7 +19,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
         public ObservableCollection<UsageInfo> Infos
         {
             get => _infos;
-            set 
+            set
             {
                 var changed = Set(nameof(Infos), ref _infos, value);
 
@@ -27,7 +27,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
                 {
                     ExportCommand.RaiseCanExecuteChanged();
                 }
-            } 
+            }
         }
 
         private bool _isBusy;
@@ -35,7 +35,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
         public bool IsBusy
         {
             get => _isBusy;
-            set 
+            set
             {
                 var changed = Set(nameof(IsBusy), ref _isBusy, value);
 
@@ -44,7 +44,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
                     LoadIntervalsCommand.RaiseCanExecuteChanged();
                     ExportCommand.RaiseCanExecuteChanged();
                 }
-            } 
+            }
         }
 
         #endregion
@@ -53,7 +53,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
 
         private RelayCommand _loadIntervalsCommand;
         public RelayCommand LoadIntervalsCommand => _loadIntervalsCommand
-            ?? (_loadIntervalsCommand = new RelayCommand(ExecuteLoadIntervalsCommandAsync, 
+            ?? (_loadIntervalsCommand = new RelayCommand(ExecuteLoadIntervalsCommandAsync,
                 CanExecuteLoadIntervalsCommand));
 
         private RelayCommand _exportCommand;
@@ -68,7 +68,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
         private readonly IEntriesExporter _entriesExporter;
         private readonly IMessenger _messenger;
 
-        public TimeIntervalsViewModel(IUsageLogTimeService usageLogTimeService, IDialogService dialogService, 
+        public TimeIntervalsViewModel(IUsageLogTimeService usageLogTimeService, IDialogService dialogService,
             IEntriesExporter entriesExporter, IMessenger messenger)
         {
             _usageLogTimeService = usageLogTimeService;
@@ -82,21 +82,28 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
 
         private async void ExecuteLoadIntervalsCommandAsync()
         {
-            if(Infos != null) Infos.Clear();
+            if (Infos != null) Infos.Clear();
             IsBusy = true;
 
-            var getSystemEventsResult = await _usageLogTimeService.GetSystemEventsAsync();
-
-            if (getSystemEventsResult.IsSuccess)
+            try
             {
-                var events = getSystemEventsResult.Value;
-                Infos = new ObservableCollection<UsageInfo>(_usageLogTimeService.BuildUsageInfo(events).ToList());
+                var getSystemEventsResult = await _usageLogTimeService.GetSystemEventsAsync();
 
-                _messenger.Send(new OnUsageInfosChangedMessage(Infos.ToList()));
+                if (getSystemEventsResult.IsSuccess)
+                {
+                    var events = getSystemEventsResult.Value;
+                    Infos = new ObservableCollection<UsageInfo>(_usageLogTimeService.BuildUsageInfo(events).ToList());
+
+                    _messenger.Send(new OnUsageInfosChangedMessage(Infos.ToList()));
+                }
+                else
+                {
+                    _dialogService.ShowError(getSystemEventsResult.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                _dialogService.ShowError(getSystemEventsResult.Error);
+                _dialogService.ShowError(ex.Message + "\n" + ex.StackTrace);
             }
 
             IsBusy = false;
@@ -118,9 +125,9 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
                 else
                 {
                     _dialogService.ShowError(exportResult.Error);
-                }     
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _dialogService.ShowError(ex.Message);
             }

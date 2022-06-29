@@ -19,7 +19,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
         public ObservableCollection<SessionEntry> Sessions
         {
             get => _sessions;
-            set 
+            set
             {
                 var changed = Set(nameof(Sessions), ref _sessions, value);
 
@@ -27,7 +27,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
                 {
                     ExportCommand.RaiseCanExecuteChanged();
                 }
-            } 
+            }
         }
 
         private bool _isBusy;
@@ -83,21 +83,28 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
 
         private async void ExecuteLoadSessionEntriesCommand()
         {
-            if(Sessions != null) Sessions.Clear();
+            if (Sessions != null) Sessions.Clear();
             IsBusy = true;
 
-            var getSessionsResult = await _loggedInfoService.GetSessionsAsync();
-
-            if (getSessionsResult.IsSuccess)
+            try
             {
-                var events = getSessionsResult.Value;
-                Sessions = new ObservableCollection<SessionEntry>(events);
+                var getSessionsResult = await _loggedInfoService.GetSessionsAsync();
 
-                _messenger.Send(new OnSessionEntriesChangedMessage(Sessions.ToList()));
+                if (getSessionsResult.IsSuccess)
+                {
+                    var events = getSessionsResult.Value;
+                    Sessions = new ObservableCollection<SessionEntry>(events);
+
+                    _messenger.Send(new OnSessionEntriesChangedMessage(Sessions.ToList()));
+                }
+                else
+                {
+                    _dialogService.ShowError(getSessionsResult.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                _dialogService.ShowError(getSessionsResult.Error);
+                _dialogService.ShowError(ex.Message + "\n" + ex.StackTrace);
             }
 
             IsBusy = false;

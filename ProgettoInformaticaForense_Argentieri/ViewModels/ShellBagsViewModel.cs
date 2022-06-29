@@ -20,7 +20,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
         public ObservableCollection<ShellBagEntry> ShellBagsEntries
         {
             get => _shellBagsEntries;
-            set 
+            set
             {
                 var changed = Set(nameof(ShellBagsEntries), ref _shellBagsEntries, value);
 
@@ -28,7 +28,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
                 {
                     ExportCommand.RaiseCanExecuteChanged();
                 }
-            } 
+            }
         }
 
         private bool _isBusy;
@@ -86,20 +86,27 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
             if (ShellBagsEntries != null) ShellBagsEntries.Clear();
             IsBusy = true;
 
-            var shellbagsResult = await _shellBagsParserService.ParseShellBags();
-
-            if (shellbagsResult.IsSuccess)
+            try
             {
-                var shellBags = shellbagsResult.Value;
-                var entries = GetShellBagsEntries(shellBags).ToList();
+                var shellbagsResult = await _shellBagsParserService.ParseShellBags();
 
-                ShellBagsEntries = new ObservableCollection<ShellBagEntry>(entries);
+                if (shellbagsResult.IsSuccess)
+                {
+                    var shellBags = shellbagsResult.Value;
+                    var entries = GetShellBagsEntries(shellBags).ToList();
 
-                _messenger.Send(new OnShellBagEntriesChangedMessage(ShellBagsEntries.ToList()));
+                    ShellBagsEntries = new ObservableCollection<ShellBagEntry>(entries);
+
+                    _messenger.Send(new OnShellBagEntriesChangedMessage(ShellBagsEntries.ToList()));
+                }
+                else
+                {
+                    _dialogService.ShowError(shellbagsResult.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                _dialogService.ShowError(shellbagsResult.Error);
+                _dialogService.ShowError(ex.Message + "\n" + ex.StackTrace);
             }
 
             IsBusy = false;

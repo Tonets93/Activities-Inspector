@@ -85,14 +85,21 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
             if (TimeChangedEntries != null) TimeChangedEntries.Clear();
             IsBusy = true;
 
-            var result = await _timeChanged.GetSystemTimeChangedEntriesAsync();
-
-            if (result.IsSuccess)
+            try
             {
-                var events = result.Value;
-                TimeChangedEntries = new ObservableCollection<SystemTimeChangedEntry>(result.Value);
+                var result = await _timeChanged.GetSystemTimeChangedEntriesAsync();
 
-                _messenger.Send(new OnSystemTimeChangedEntriesChangedMessage(TimeChangedEntries.ToList()));
+                if (result.IsSuccess)
+                {
+                    var events = result.Value;
+                    TimeChangedEntries = new ObservableCollection<SystemTimeChangedEntry>(result.Value);
+
+                    _messenger.Send(new OnSystemTimeChangedEntriesChangedMessage(TimeChangedEntries.ToList()));
+                }
+            }
+            catch (Exception ex)
+            {
+                _dialogService.ShowError(ex.Message + "\n" + ex.StackTrace);
             }
 
             IsBusy = false;

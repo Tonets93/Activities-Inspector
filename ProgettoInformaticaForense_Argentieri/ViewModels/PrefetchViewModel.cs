@@ -19,7 +19,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
         public ObservableCollection<PrefetchInfoEntry> PrefetchEntries
         {
             get => _prefetchEntries;
-            set 
+            set
             {
                 var changed = Set(nameof(PrefetchEntries), ref _prefetchEntries, value);
 
@@ -27,7 +27,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
                 {
                     ExportCommand.RaiseCanExecuteChanged();
                 }
-            } 
+            }
         }
 
         private bool _isBusy;
@@ -68,7 +68,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
         private readonly IEntriesExporter _entriesExporter;
         private readonly IMessenger _messenger;
 
-        public PrefetchViewModel(IPrefetchFileInfoBuilderService prefetchFileInfoBuilderService, 
+        public PrefetchViewModel(IPrefetchFileInfoBuilderService prefetchFileInfoBuilderService,
             IDialogService dialogService, IEntriesExporter entriesExporter, IMessenger messenger)
         {
             _prefetchFileInfoBuilderService = prefetchFileInfoBuilderService;
@@ -85,17 +85,24 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
             if (PrefetchEntries != null) PrefetchEntries.Clear();
             IsBusy = true;
 
-            var getPrefetchFileInfosResult = await _prefetchFileInfoBuilderService.GetPrefetchFileInfosAsync();
-
-            if (getPrefetchFileInfosResult.IsSuccess)
+            try
             {
-                PrefetchEntries = new ObservableCollection<PrefetchInfoEntry>(getPrefetchFileInfosResult.Value);
+                var getPrefetchFileInfosResult = await _prefetchFileInfoBuilderService.GetPrefetchFileInfosAsync();
 
-                _messenger.Send(new OnPrefetchInfoEntriesChangedMessage(PrefetchEntries.ToList()));
+                if (getPrefetchFileInfosResult.IsSuccess)
+                {
+                    PrefetchEntries = new ObservableCollection<PrefetchInfoEntry>(getPrefetchFileInfosResult.Value);
+
+                    _messenger.Send(new OnPrefetchInfoEntriesChangedMessage(PrefetchEntries.ToList()));
+                }
+                else
+                {
+                    _dialogService.ShowError(getPrefetchFileInfosResult.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                _dialogService.ShowError(getPrefetchFileInfosResult.Error);
+                _dialogService.ShowError(ex.Message + "\n" + ex.StackTrace);
             }
 
             IsBusy = false;

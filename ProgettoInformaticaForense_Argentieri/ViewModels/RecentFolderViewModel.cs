@@ -19,7 +19,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
         public ObservableCollection<RecentFolderEntry> RecentFolderEntries
         {
             get => _recentFolderEntries;
-            set 
+            set
             {
                 var changed = Set(nameof(RecentFolderEntries), ref _recentFolderEntries, value);
 
@@ -27,7 +27,7 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
                 {
                     ExportCommand.RaiseCanExecuteChanged();
                 }
-            } 
+            }
         }
 
         private bool _isBusy;
@@ -85,17 +85,24 @@ namespace ProgettoInformaticaForense_Argentieri.ViewModels
             if (RecentFolderEntries != null) RecentFolderEntries.Clear();
             IsBusy = true;
 
-            var getRecentFilesResult = await _recentFilesService.GetRecentFiles();
-
-            if (getRecentFilesResult.IsSuccess)
+            try
             {
-                RecentFolderEntries = new ObservableCollection<RecentFolderEntry>(getRecentFilesResult.Value);
+                var getRecentFilesResult = await _recentFilesService.GetRecentFiles();
 
-                _messenger.Send(new OnRecentFolderEntriesChangedMessage(RecentFolderEntries.ToList()));
+                if (getRecentFilesResult.IsSuccess)
+                {
+                    RecentFolderEntries = new ObservableCollection<RecentFolderEntry>(getRecentFilesResult.Value);
+
+                    _messenger.Send(new OnRecentFolderEntriesChangedMessage(RecentFolderEntries.ToList()));
+                }
+                else
+                {
+                    _dialogService.ShowError(getRecentFilesResult.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                _dialogService.ShowError(getRecentFilesResult.Error);             
+                _dialogService.ShowError(ex.Message + "\n" + ex.StackTrace);
             }
 
             IsBusy = false;
